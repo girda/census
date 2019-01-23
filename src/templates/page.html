@@ -1,0 +1,22 @@
+---
+title: Green Light
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+	
+    <div class="container">
+
+        <div class="slection-key js-wrap-btns-auth">
+            <button class="js-open-auth" data-key="file">Файловий носий</button>
+            <button class="js-open-auth" data-key="protected">Захищинный носий</button>
+        </div>
+
+        {% include "partials/_form-auth-key.html" %}
+
+        {% include "partials/_cabinet-user.html" %}
+        
+    </div>
+ 
+
+{% endblock %}

@@ -1,0 +1,65 @@
+.radio.have-children .radio 
+    display: none
+
+.radio.have-children.is-show .radio 
+    display: block
+
+.radio__title 
+    position: relative
+    font-size: 18px
+    font-weight: 400
+    padding-left: 30px
+
+.radio .radio 
+    margin-left: 30px
+    margin-top: 15px
+
+.radio input[type=radio] 
+    display: none
+
+.radio label:before 
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    height: 20px
+    width: 20px
+    border: 1px solid royalblue
+
+.radio label:after 
+    display: none
+    content: ''
+    position: absolute
+    left: 4px
+    top: 4px
+    height: 12px
+    width: 12px
+    background-color: royalblue
+
+h3.radio__title:before 
+    content: ''
+    position: absolute
+    left: 7px
+    top: 0
+    height: 20px
+    width: 6px
+    background-color: green
+
+h3.radio__title:after 
+    content: ''
+    position: absolute
+    left: 0
+    top: 7px
+    height: 6px
+    width: 20px
+    background-color: green
+
+.radio__input:checked + .radio__label:after 
+    display: block
+
+.radio.have-children > .radio__input:checked + .radio__label:after 
+    display: none
+.radio__input ~ .child
+    display: none
+.radio__input:checked ~ .child
+    display: block
