@@ -52,8 +52,6 @@ export default function initTabs() {
 
         currentTarget.classList.add('is-active')
         currentContent.classList.add('is-active')
-
-        console.log(activeTabContentId)
     }
 
 

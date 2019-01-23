@@ -2,18 +2,31 @@
     <div class="tabs js-tabs">
 
         <ul class="tabs__nav-title">
-            <li class="is-active"><a href="#p-1" data="1">Адреса(П1)</a></li>
-            <li class=""><a href="#p-2" data="2">Житлові умови(П2)</a></li>
-            <li class=""><a href="#p-3" data="3">Розмір загальної площі(П3)</a></li>
-            <li class=""><a href="#p-4" data="4">Види благоустрою(П4)</a></li>
-            <li class=""><a href="#p-5" data="5">Туалет(П5)</a></li>
+            <li class="is-active"><a href="#p-1" data="1">(П1)</a></li>
+            <li class=""><a href="#p-2" data="2">(П2)</a></li>
+            <li class=""><a href="#p-3" data="3">(П3)</a></li>
+            <li class=""><a href="#p-4" data="4">(П4)</a></li>
+            <li class=""><a href="#p-5" data="5">(П5)</a></li>
+            <li class=""><a href="#p-6" data="6">(П6)</a></li>
+            <li class=""><a href="#p-7" data="7">(П7)</a></li>
+            <li class=""><a href="#p-8" data="8">(П8)</a></li>
+            <li class=""><a href="#p-9" data="9">(П9)</a></li>
+            <li class=""><a href="#p-10" data="10">(П10)</a></li>
+            <li class=""><a href="#p-11" data="11">(П11)</a></li>
+            <li class=""><a href="#p-12" data="12">(П12)</a></li>
+            <li class=""><a href="#p-13" data="13">(П13)</a></li>
+            <li class=""><a href="#p-14" data="14">(П14)</a></li>
+            <li class=""><a href="#p-15" data="15">(П15)</a></li>
+            <li class=""><a href="#p-16" data="16">(П16)</a></li>
+            <li class=""><a href="#p-17" data="17">(П17)</a></li>
         </ul>
 
         <div class="tabs__contents">
-            <div id="p-1" class="tabs__content is-active js-tab-content" data="address"> 
+            <div id="p-1" class="tabs__content is-active js-tab-content" data="address">
+                <h2 class="form-room__title">Адреса</h2>
                 {% for item in item.address %}
                 <div class="form-room__col">
-                    <h3 class="form-room__row-title">{{ item.title }}</h3>
+                    <h3 class="form-room__subtitle">{{ item.title }}</h3>
                     <select name="{{ item.selectName }}">
                         <option rel="default"></option>
                         {% for item in item.options %}
@@ -24,31 +37,31 @@
                 {% endfor %}
 
                 <div class="form-room__col">
-                    <h3 class="form-room__row-title">№ будинку</h3>
-                    <input type="number" name="r_house_number" min="1" max="999">
+                    <h3 class="form-room__subtitle">№ будинку</h3>
+                    <input type="number" name="house_number" min="1" max="999">
                 </div>
 
                 <div class="form-room__col">
-                    <h3 class="form-room__row-title">№ квартири</h3>
-                    <input type="number" name="r_apartment_number" min="1" max="999">
+                    <h3 class="form-room__subtitle">№ квартири</h3>
+                    <input type="number" name="apartment_number" min="1" max="999">
                 </div>
             </div> 
 
             <div id="p-2" class="tabs__content js-tab-content" data="living-conditions">
-                <h2 class="form-room__title">Тип будівлі та житлового приміщення</h2>
+                <h2 class="form-room__title">Житлові умови. Тип будівлі та житлового приміщення</h2>
 
                 {% for item in item.buildingType %}
                 <div class="form-room__col radio{% if item.children %} have-children{% endif %}{% if item.input %} have-input{% endif %}">
                     
                     {% if item.id %}
                     <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="building_type">
-                    <label class="radio__title radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
                     {% else %}
-                    <h3 class="form-room__row-title radio__title">{{ item.title}}</h3>
+                    <h3 class="form-room__subtitle radio__title">{{ item.title}}</h3>
                     {% for item in item.children %}
                     <div class="form-room__row-child radio child">
                         <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="building_type">
-                        <label class="radio__title radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                        <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
                     </div>
                     {% endfor %}
                     {% endif %}
@@ -77,7 +90,7 @@
                {% for item in item.waterSupply %}
                 <div class="form-room__col radio">
                     <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="water_supply">
-                    <label class="radio__title radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
                 </div>
                 {% endfor %}
                
@@ -85,28 +98,166 @@
 
             <div id="p-5" class="tabs__content js-tab-content">
                <h2 class="form-room__title">Туалет</h2>
-
                {% for item in item.toilet %}
                 <div class="form-room__col radio{% if item.children %} have-children{% endif %}">
                     
                     {% if item.id %}
                     <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="toilet">
-                    <label class="radio__title radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
                     {% else %}
-                    <h3 class="form-room__row-title radio__title">{{ item.title}}</h3>
+                    <h3 class="form-room__subtitle radio__title">{{ item.title}}</h3>
                     {% for item in item.children %}
                     <div class="form-room__row-child radio child">
                         <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="toilet">
-                        <label class="radio__title radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                        <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
                     </div>
                     {% endfor %}
                     {% endif %}  
 
                 </div>
                 {% endfor %}
+            </div>
 
+            <div id="p-6" class="tabs__content js-tab-content">
+               <h2 class="form-room__title">Ванна та (або) душ</h2>
 
-               
+               {% for item in item.bath %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="bath">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-7" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Гаряче водопостачання</h2>
+
+                {% for item in item.hotWaterSupply %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="hot_water_supply">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-8" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Водовідведення (каналізація)</h2>
+
+                {% for item in item.sewage %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="sewage">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div id="p-9" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Кухня або кухонний куток</h2>
+
+                {% for item in item.kitchen %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="kitchen">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-10" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Опалення</h2>
+
+                {% for item in item.heating %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="heating">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-11" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Електропостачання</h2>
+
+                {% for item in item.electricitySupply %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="electricity_supply">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-12" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Електрична плита стаціонарна</h2>
+
+                {% for item in item.electricStove %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="electric_stove">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-13" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Газ</h2>
+
+                {% for item in item.gas %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="gas">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-14" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Видалення побутових відходів</h2>
+
+                {% for item in item.garbage %}
+                <div class="form-room__col radio{% if item.input %} have-input{% endif %}">
+
+                    {% if item.id %}
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="garbage">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                    {% else %}
+                    <h3 class="form-room__subtitle radio__title">{{ item.title}}</h3>
+                    {% endif %}
+
+                    {% if item.input %}
+                        <input class="child" type="text" name="{{ item.input }}" placeholder="Зазначте">
+                    {% endif %}
+
+                </div>
+                {% endfor %}
+
+                
+            </div>
+
+            <div id="p-15" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Період побудови будівлі</h2>
+
+                {% for item in item.сonstructionBuildingTime %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="сonstruction_building_time">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-16" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Матеріал зовнішніх стін будівлі</h2>
+
+                {% for item in item.wallsMaterial %}
+                <div class="form-room__col radio">
+                    <input class="radio__input" type="radio" id="{{ item.id }}" value="{{ item.value }}" name="walls_material">
+                    <label class="radio__title form-room__subtitle radio__label" for="{{ item.id }}">{{ item.title}}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="p-17" class="tabs__content js-tab-content">
+                <h2 class="form-room__title">Кількість домогосподарств, що проживає у приміщенні</h2>
+
+                <div class="form-room__row">
+                   <input type="number" name="households_count">
+               </div>
             </div>
             
         </div>
